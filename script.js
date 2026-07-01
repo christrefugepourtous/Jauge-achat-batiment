@@ -1,4 +1,5 @@
-const DATA_URL = "data.json";
+const SUPABASE_URL = "https://lstxqfpzuitaqbjvlbma.supabase.co";
+const SUPABASE_KEY = "sb_publishable_7joUByBeS0gQx8o_pKEpBQ_AdACfuJl";
 const REFRESH_DELAY = 10000;
 
 // Tous les points d'affichage sont centralisés ici pour éviter de modifier le HTML.
@@ -168,20 +169,43 @@ function renderProgress(nextState) {
 
 async function loadData() {
     try {
-        // Le paramètre v force le navigateur à relire data.json au lieu d'utiliser une ancienne version.
-        const response = await fetch(`${DATA_URL}?v=${Date.now()}`, { cache: "no-store" });
+
+        const response = await fetch(
+            `${SUPABASE_URL}/rest/v1/jauge?id=eq.1&select=*`,
+            {
+                headers: {
+                    "apikey": SUPABASE_KEY,
+                    "Authorization": `Bearer ${SUPABASE_KEY}`
+                }
+            }
+        );
 
         if (!response.ok) {
-            throw new Error(`Impossible de lire ${DATA_URL}`);
+            throw new Error(`Erreur HTTP ${response.status}`);
         }
 
         const data = await response.json();
-        updateDonationContent(data);
-        renderProgress(calculateProgress(data));
+
+        if (!data.length) {
+            throw new Error("Aucune donnée trouvée.");
+        }
+
+        updateDonationContent({
+            lienDon: "https://www.helloasso.com/associations/christ-refuge-pour-tous/collectes/achat-du-batiment",
+            qrCode: "qr-code.png"
+        });
+
+        renderProgress(calculateProgress(data[0]));
+
     } catch (error) {
-        elements.status.textContent = "La collecte sera mise à jour dès que data.json sera disponible.";
-        console.error(error);
-    }
+
+    console.error(error);
+    alert(error.message);
+
+    elements.status.textContent =
+        "Impossible de récupérer la collecte.";
+
+}
 }
 
 elements.donationLink.addEventListener("click", (event) => {
