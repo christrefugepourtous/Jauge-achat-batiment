@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achat du bâtiment - Jauge de collecte</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="page-shell">
+        <section class="hero" aria-labelledby="main-title">
+            <div class="logo-space" aria-label="Emplacement du logo"></div>
+
+            <div class="hero-copy">
+                <h1 id="main-title">Achat du bâtiment</h1>
+                <p>Soutenons notre projet d'église</p>
+            </div>
+
+            <section class="gauge-panel" aria-label="Progression de la collecte">
+                <div class="progress-heading">
+                    <div>
+                        <span class="eyebrow">Progression</span>
+                        <strong id="percentageText">0%</strong>
+                    </div>
+                    <p id="statusText">Chargement de la collecte...</p>
+                </div>
+
+                <div class="progress-track" aria-hidden="true">
+                    <div class="progress-fill" id="progressFill"></div>
+                    <div class="progress-glow"></div>
+                </div>
+
+                <dl class="stats-grid">
+                    <div class="stat-card">
+                        <dt>Objectif</dt>
+                        <dd id="goalAmount">0 €</dd>
+                    </div>
+                    <div class="stat-card featured">
+                        <dt>Collecté</dt>
+                        <dd id="raisedAmount">0 €</dd>
+                    </div>
+                    <div class="stat-card">
+                        <dt>Restant</dt>
+                        <dd id="remainingAmount">0 €</dd>
+                    </div>
+                    <div class="stat-card">
+                        <dt>Pourcentage</dt>
+                        <dd id="percentageAmount">0%</dd>
+                    </div>
+                </dl>
+
+                <p class="updated-at">Dernière mise à jour : <time id="updatedAt">--</time></p>
+            </section>
+
+            <section class="donation-panel" aria-label="Don en ligne et QR code">
+                <div class="qr-card">
+                    <span class="qr-label">Scanner pour donner</span>
+                    <div class="qr-box has-image">
+                        <img id="qrCodeImage" src="qr-code.png" alt="QR code pour faire un don">
+                        <span id="qrPlaceholder">QR CODE</span>
+                    </div>
+                </div>
+                <div class="donation-copy">
+                    <span class="eyebrow">Participer</span>
+                    <h2>Contribuer à l'achat du bâtiment</h2>
+                    <p>Votre participation aide l'église à franchir cette étape importante. Scannez le QR code ou utilisez le bouton sécurisé HelloAsso pour faire un don.</p>
+                    <div class="helloasso-widget" aria-label="Bouton de don HelloAsso">
+                        <iframe id="haWidgetButton" title="Faire un don avec HelloAsso" allowtransparency="true" src="https://www.helloasso.com/associations/christ-refuge-pour-tous/collectes/achat-du-batiment/widget-bouton"></iframe>
+                    </div>
+                    <a class="donation-link fallback-link" id="donationLink" href="https://www.helloasso.com/associations/christ-refuge-pour-tous/collectes/achat-du-batiment" target="_blank" rel="noopener">Ouvrir la page de don</a>
+                    <span class="secure-note">Don sécurisé via HelloAsso</span>
+                </div>
+            </section>
+
+            <section class="info-panel" aria-labelledby="builders-title">
+                <div class="info-header">
+                    <span class="eyebrow">CAMPAGNE DE BÂTISSEURS</span>
+                    <h2 id="builders-title">Votre don ouvre droit à une réduction d'impôt</h2>
+                    <p>Notre association est habilitée à délivrer des reçus fiscaux.</p>
+                    <p>À ce titre, chaque don effectué peut ouvrir droit à une réduction d'impôt de 66 % du montant versé, dans les conditions prévues par la législation fiscale française.</p>
+                </div>
+
+                <div class="info-columns">
+                    <article class="table-block">
+                        <h3>Exemples concrets</h3>
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Votre don</th>
+                                        <th>Réduction d'impôt (66 %)</th>
+                                        <th>Coût réel après réduction*</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>100 €</td><td>66 €</td><td>34 €</td></tr>
+                                    <tr><td>250 €</td><td>165 €</td><td>85 €</td></tr>
+                                    <tr><td>500 €</td><td>330 €</td><td>170 €</td></tr>
+                                    <tr><td>1 000 €</td><td>660 €</td><td>340 €</td></tr>
+                                    <tr><td>1 500 €</td><td>990 €</td><td>510 €</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="note">*Pour les personnes imposables, dans la limite des dispositions fiscales en vigueur.</p>
+                    </article>
+
+                    <article class="table-block highlighted-block">
+                        <h3>Ensemble, bâtissons cette vision</h3>
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Nombre de personnes</th>
+                                        <th>Engagement</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>5</td><td>1 500 €</td><td>7 500 €</td></tr>
+                                    <tr><td>10</td><td>1 000 €</td><td>10 000 €</td></tr>
+                                    <tr><td>15</td><td>500 €</td><td>7 500 €</td></tr>
+                                    <tr><td>20</td><td>250 €</td><td>5 000 €</td></tr>
+                                    <tr><td>100</td><td>100 €</td><td>10 000 €</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="campaign-goal">Objectif de la campagne : 40 000 €</p>
+                    </article>
+                </div>
+
+                <p class="closing-text">Chaque participation est précieuse. Quel que soit le montant de votre don, vous prenez part à la construction de cette nouvelle étape de notre vision. Merci pour votre générosité, votre fidélité et votre engagement.</p>
+            </section>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
